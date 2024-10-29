@@ -13,7 +13,7 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div>
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+            <nav class="bg-blue-600 text-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -21,16 +21,14 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
+                                    <h1 class="text-2xl font-bold">Meus Quadro de Tarefas</h1>
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex ">
+                                <NavLink class="text-white" :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Quadros
                                 </NavLink>
                             </div>
                         </div>
@@ -135,6 +133,7 @@ const showingNavigationDropdown = ref(false);
                     </div>
                 </div>
             </nav>
+
 
             <!-- Page Heading -->
             <header class="bg-white shadow" v-if="$slots.header">
