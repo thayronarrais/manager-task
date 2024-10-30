@@ -6,7 +6,7 @@ import { Inertia } from '@inertiajs/inertia';
 import { router, Head, useForm } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
-// Recebe os boards como props
+
 const props = defineProps({
   boards: {
     type: Array,
@@ -14,15 +14,15 @@ const props = defineProps({
   },
 });
 
-// Cria o formulário usando useForm
+
 const form = useForm({
     name: '',
 });
 
-// Controla a exibição do modal
+
 const showModal = ref(false);
 
-// Funções
+
 function openBoard(boardId) {
   router.visit(`/boards/${boardId}`, { preserveScroll: true });
 }
@@ -104,7 +104,3 @@ function createBoard() {
     </div>
   </AuthenticatedLayout>
 </template>
-
-<style scoped>
-/* Estilos adicionais, se necessário */
-</style>

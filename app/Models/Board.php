@@ -20,7 +20,7 @@ class Board extends Model
             }
         });
     }
-    
+
     protected $fillable = [
         'name',
         'description',
@@ -29,4 +29,9 @@ class Board extends Model
         'user_id',
         'slug'
     ];
+
+    public function cards()
+    {
+        return $this->hasMany(BoardCard::class, 'board_id', 'id');
+    }
 }

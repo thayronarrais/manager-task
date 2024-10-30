@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\BoardCard;
+use App\Models\BoardCardItem;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -31,13 +33,21 @@ class BoardController extends Controller
         return redirect()->route('boards.index');
     }
 
-
     public function show($slug)
     {
-        $board = Board::where('slug', $slug)->where('user_id', auth()->id())->firstOrFail();
-        // dd($board);
+        $board = Board::with(['cards', 'cards.items'])->where('slug', $slug)->where('user_id', auth()->id())->firstOrFail();
+
         return Inertia::render('Boards/Index', [
             'board' => $board,
         ]);
+    }
+
+    public function destroy($id){
+        $board = Board::find($id);
+        if($board){
+            $board->delete();
+        }
+
+        return redirect()->route('boards.index');
     }
 }

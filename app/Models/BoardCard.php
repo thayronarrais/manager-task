@@ -4,16 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BoardCardItem extends Model
+class BoardCard extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'name',
-        'description',
-        'card_id',
+        'board_id'
     ];
+
+    public function items()
+    {
+        return $this->hasMany(BoardCardItem::class, 'card_id', 'id');
+    }
 }
